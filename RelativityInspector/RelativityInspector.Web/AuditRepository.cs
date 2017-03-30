@@ -11,20 +11,28 @@ namespace RelativityInspector.Web
 {
     public class AuditRepository
     {
+
+        private string ConnectionString
+        {
+            get
+            {
+                return ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            }
+        }
         IEnumerable<AuditItem> items;
         long last = 0;
         public void GetData()
         {
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (var connection = new SqlConnection(ConnectionString))
             {
                 string initialQuery = $@" 
-select top 10 ID, isnull(Details,''), TimeStamp, convert(varchar,ISNULL(Sessionidentifier, 0)) as Status
+select top 10 ID, ArtifactID, isnull(Details,''), TimeStamp, convert(varchar,ISNULL(Sessionidentifier, 0)) as Status
 from  EDDSDBO.AuditRecord_PrimaryPartition 
 where Action<= 9
 order by ID desc";
                 string lastQuery = $@"
-select ID, isnull(Details,''), TimeStamp, convert(varchar,ISNULL(Sessionidentifier, 0)) as status
+select ID, ArtifactID, isnull(Details,''), TimeStamp, convert(varchar,ISNULL(Sessionidentifier, 0)) as status
 from  EDDSDBO.AuditRecord_PrimaryPartition 
 where Action<= 9
 and ID >= {last}";
@@ -48,9 +56,10 @@ and ID >= {last}";
                             .Select(x => new AuditItem()
                             {
                                 AuditID = x.GetInt64(0),
-                                Name = x.GetString(1),
-                                LastExecutionDate = x.GetDateTime(2),
-                                Status = x.GetString(3)
+                                ArtifactID = x.GetInt32(1),
+                                Name = x.GetString(2),
+                                LastExecutionDate = x.GetDateTime(3),
+                                Status = x.GetString(4)
                             }).OrderBy(x => x.AuditID).ToList();
                         last = items.Last().AuditID;
                         if (items.Any())
@@ -64,6 +73,21 @@ and ID >= {last}";
         private void dependency_OnChange(object sender, SqlNotificationEventArgs e)
         {
             GetData();
+        }
+
+        public string ArtifactTextIdentifier(int artifactID)
+        {
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                using (var command = 
+                    new SqlCommand($@"select TextIdentifier 
+                        from EDDSDBO.Artifact 
+                        where ArtifactID = {artifactID} ", connection))
+                {
+                    connection.Open();
+                    return command.ExecuteScalar() as string;
+                } 
+            }
         }
     }
 }
