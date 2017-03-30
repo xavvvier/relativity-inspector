@@ -12,5 +12,10 @@ namespace RelativityInspector.Web
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<AuditHub>();
             context.Clients.All.newData(audits?.Take(1));
         }
+
+        public string TextIdentifier(int artifactID)
+        {
+            return new AuditRepository().ArtifactTextIdentifier(artifactID);
+        }
     }
 }
