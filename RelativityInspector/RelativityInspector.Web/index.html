@@ -7,10 +7,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" async href="dist/css">
-    <script src="dist/js" ></script>
-    <script src="signalr/hubs" type="text/javascript"></script>
 
+    <link rel="stylesheet" async href="dist/css">
+    <script src="dist/js"></script>
+
+    <script src="signalr/hubs" type="text/javascript"></script>
 
     <script src="Scripts/app/app.module.js"></script>
     <script src="Scripts/app/main/main.controller.js"></script>
@@ -19,6 +20,10 @@
 
 </head>
 <body ng-app="app">
-    <div ng-controller="main"></div>
+    <div ng-controller="main as T">
+        <div>
+            {{T.data | json}}
+        </div>
+    </div>
 </body>
 </html>
