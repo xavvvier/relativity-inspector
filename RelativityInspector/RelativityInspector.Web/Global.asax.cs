@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.Http;
+using System.Web.Optimization;
 
 namespace RelativityInspector.Web
 {
@@ -18,6 +19,7 @@ namespace RelativityInspector.Web
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             SqlDependency.Start(ConnectionString);
             repository = new AuditRepository();
             repository.GetData();
