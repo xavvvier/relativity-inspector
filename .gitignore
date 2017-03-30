@@ -2,3 +2,4 @@ RelativityInspector/RelativityInspector.Web/Scripts/i18n/
 RelativityInspector/packages/
 bin/
 obj/
+RelativityInspector/RelativityInspector.Web/node_modules/
