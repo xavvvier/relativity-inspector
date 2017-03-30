@@ -12,7 +12,7 @@ namespace RelativityInspector.Web
     public class AuditRepository
     {
         IEnumerable<AuditItem> items;
-        int last = 0;
+        long last = 0;
         public void GetData()
         {
 
@@ -47,10 +47,10 @@ and ID >= {last}";
                         items = reader.Cast<IDataRecord>()
                             .Select(x => new AuditItem()
                             {
-                                AuditID = 1,
-                                //Name = x.GetString(1),
-                                //LastExecutionDate = x.GetDateTime(2),
-                                //Status = x.GetString(3)
+                                AuditID = x.GetInt64(0),
+                                Name = x.GetString(1),
+                                LastExecutionDate = x.GetDateTime(2),
+                                Status = x.GetString(3)
                             }).OrderBy(x => x.AuditID).ToList();
                         last = items.Last().AuditID;
                         if (items.Any())
