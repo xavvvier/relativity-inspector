@@ -4,3 +4,4 @@ bin/
 obj/
 RelativityInspector/RelativityInspector.Web/node_modules/
 RelativityInspector/.vs/RelativityInspector/v14/.suo
+*.user
