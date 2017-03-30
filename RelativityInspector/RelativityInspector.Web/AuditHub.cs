@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.SignalR;
 using RelativityInspector.Web.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RelativityInspector.Web
 {
@@ -9,7 +10,7 @@ namespace RelativityInspector.Web
         public static void Notify(IEnumerable<AuditItem> audits)
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<AuditHub>();
-            context.Clients.All.newData();
+            context.Clients.All.newData(audits?.Take(1));
         }
     }
 }

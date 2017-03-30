@@ -8,9 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" async href="dist/css">
-    <script src="dist/js" async></script>
+    <script src="dist/js" ></script>
+    <script src="signalr/hubs" type="text/javascript"></script>
+
+
+    <script src="Scripts/app/app.module.js"></script>
+    <script src="Scripts/app/main/main.controller.js"></script>
+    <script src="Scripts/app/core/app.core.module.js"></script>
+    <script src="Scripts/app/core/signalR/factory/signalR.core.factory.js"></script>
+
 </head>
-<body>
-    paco
+<body ng-app="app">
+    <div ng-controller="main"></div>
 </body>
 </html>

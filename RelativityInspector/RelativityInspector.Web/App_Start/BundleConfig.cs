@@ -10,11 +10,15 @@ namespace RelativityInspector.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             IEnumerable<string> jss = new string[] {
+                "~/Scripts/jquery-1.6.4.js",
+                "~/Scripts/jquery.signalR-2.2.1.js",
+                "~/signalr/hubs",
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-material/angular-material.js",
+                "~/node_modules/angular-signalr-hub/signalr-hub.js",
             };
 
-            jss = jss.Concat(GetApp());
+            //jss = jss.Concat(GetApp());
 
             bundles.Add(new ScriptBundle("~/dist/js")
                 .Include(jss.ToArray()));
