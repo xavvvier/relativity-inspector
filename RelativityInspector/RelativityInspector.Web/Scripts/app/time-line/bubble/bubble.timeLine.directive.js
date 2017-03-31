@@ -14,7 +14,14 @@
         // 
         var directive = {
             link: link,
-            restrict: 'EA'
+            restrict: 'E',
+            templateUrl: 'Scripts/app/time-line/bubble/bubble.timeLine.directive.html',
+            controller: 'bubble.timeLine',
+            controllerAs: 'bubble',
+            scope: {
+                item: '='
+            },
+            bindToController: true,
         };
         return directive;
 

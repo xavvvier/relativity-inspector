@@ -14,12 +14,21 @@
         // 
         var directive = {
             link: link,
-            restrict: 'EA'
+            restrict: 'E',
+            templateUrl: 'Scripts/app/time-line/panel/panel.timeLine.directive.html',
+            controller: 'panel.timeLine',
+            controllerAs: 'panel',
+            scope: {
+                items: '='
+            },
+            bindToController: true,
         };
         return directive;
 
         function link(scope, element, attrs) {
+
         }
+
     }
 
 })();
