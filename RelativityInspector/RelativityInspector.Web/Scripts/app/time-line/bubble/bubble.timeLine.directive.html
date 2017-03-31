@@ -1,2 +1,9 @@
-﻿<div style="border: 1px solid red; background-color: red; width:30px;height:30px;">
+﻿<div class="bubble">
+    <div class='pin green' ng-click="bubble.sayHello()">
+        <div class="initials" ng-bind="bubble.initials()" 
+             title="{{bubble.item.UserName + ': ' + bubble.item.ActionName + ' ' + bubble.item.ArtifactName}}"></div>
+    </div>
+    <div class='pulse'>
+        <div class="active"></div>
+    </div>
 </div>
