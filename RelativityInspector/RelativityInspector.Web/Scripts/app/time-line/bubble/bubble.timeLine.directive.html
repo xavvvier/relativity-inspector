@@ -1,9 +1,25 @@
 ﻿<div class="bubble">
-    <div class='pin green' ng-click="bubble.sayHello()">
+    <div class='pin' ng-class="{
+            'blue':bubble.item.Action == 1,
+            'red': bubble.item.Action == 9,
+            'green': [3,4,5,6].indexOf(bubble.item.Action)!=-1
+         }" ng-click="bubble.displayDetail($event)">
         <div class="initials" ng-bind="bubble.initials()" 
              title="{{bubble.item.UserName + ': ' + bubble.item.ActionName + ' ' + bubble.item.ArtifactName}}"></div>
     </div>
     <div class='pulse'>
         <div class="active"></div>
+    </div>
+    <div style="visibility: hidden">
+        <div class="md-dialog-container" id="Artifact{{bubble.item.AuditID}}">
+            <md-dialog layout-padding="">
+                <h2>{{bubble.item.UserName}}</h2>
+                <p>
+                    Object: <code>{{bubble.item.ArtifactName}}</code><br />
+                    Date: <code>{{bubble.item.LastExecutionDate}}</code><br />
+                    Action: <code>{{bubble.item.ActionName}}</code><br><br>
+                </p>
+            </md-dialog>
+        </div>
     </div>
 </div>
