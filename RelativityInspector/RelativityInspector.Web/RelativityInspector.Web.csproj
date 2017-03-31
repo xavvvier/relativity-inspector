@@ -173,6 +173,7 @@
     <Content Include="Scripts\app\app.module.js" />
     <Content Include="Scripts\app\app.run.js" />
     <Content Include="Scripts\app\core\app.core.module.js" />
+    <Content Include="Scripts\app\core\artifact\artifact.core.factory.js" />
     <Content Include="Scripts\app\core\objectType\objectType.core.factory.js" />
     <Content Include="Scripts\app\core\signalR\factory\signalR.core.factory.js" />
     <Content Include="Scripts\app\dist\app.dist.js" />
@@ -183,6 +184,7 @@
     <Content Include="Scripts\app\time-line\bubble\bubble.timeLine.directive.css" />
     <Content Include="Scripts\app\time-line\bubble\bubble.timeLine.directive.html" />
     <Content Include="Scripts\app\time-line\bubble\bubble.timeLine.directive.js" />
+    <Content Include="Scripts\app\time-line\bubble\field\choice.html" />
     <Content Include="Scripts\app\time-line\panel\panel.timeLine.controller.js" />
     <Content Include="Scripts\app\time-line\panel\panel.timeLine.directive.css" />
     <Content Include="Scripts\app\time-line\panel\panel.timeLine.directive.html" />
@@ -918,6 +920,7 @@
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="package.json" />
+    <Content Include="Scripts\app\time-line\bubble\field\simpleValue.html" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />

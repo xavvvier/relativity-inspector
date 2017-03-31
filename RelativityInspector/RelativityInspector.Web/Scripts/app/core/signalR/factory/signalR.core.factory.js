@@ -12,7 +12,7 @@
         var listeners = {
             newData: []
         };
-
+        var status = -1;
         var hub = new Hub('auditHub', {
 
             //client side methods
@@ -43,16 +43,16 @@
                 $log.info('stateChanged', state);
                 switch (state.newState) {
                     case $.signalR.connectionState.connecting:
-                        //your code here
+                        status = 0;
                         break;
                     case $.signalR.connectionState.connected:
-                        //your code here
+                        status = 1;
                         break;
                     case $.signalR.connectionState.reconnecting:
-                        //your code here
+                        status = 2;
                         break;
                     case $.signalR.connectionState.disconnected:
-                        //your code here
+                        status = 3;
                         break;
                 }
             }
@@ -73,6 +73,7 @@
         }
 
         return {
+            status : status,
             getTextIdentifier: getTextIdentifier,
             registerNewData: registerNewData,
         };

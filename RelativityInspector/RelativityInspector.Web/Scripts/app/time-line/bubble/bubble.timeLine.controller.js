@@ -5,14 +5,16 @@
         .module('app.timeLine')
         .controller('bubble.timeLine', bubble);
 
-    bubble.$inject = ['$location', '$mdDialog'];
+    bubble.$inject = ['$location', '$mdDialog', 'artifact.core'];
 
-    function bubble($location, $mdDialog) {
+    function bubble($location, $mdDialog, artifactCore) {
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'bubble';
         vm.displayDetail = displayDetail;
         vm.initials = initials;
+        vm.isArray = angular.isArray;
+        vm.binding = artifactCore.binding;
 
         activate();
 

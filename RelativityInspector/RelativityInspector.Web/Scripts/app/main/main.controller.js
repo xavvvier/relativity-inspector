@@ -18,6 +18,7 @@
             ArtifactID: 10
         }];
         vm.getTextIdentifier = getTextIdentifier;
+        vm.signalRCore = signalRCore;
 
         activate();
 

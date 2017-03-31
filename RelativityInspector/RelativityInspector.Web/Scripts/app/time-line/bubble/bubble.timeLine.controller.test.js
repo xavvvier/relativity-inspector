@@ -5,7 +5,7 @@
         .module('app.timeLine')
         .controller('test.bubble.timeLine', bubble);
 
-    bubble.$inject = ['$location']; 
+    bubble.$inject = ['$location'];
 
     function bubble($location) {
         /* jshint validthis:true */
@@ -17,18 +17,78 @@
 
         function activate() {
 
-            vm.item = {
-                "ArtifactID": 1047559,
-                "AuditID": 104324,
-                "LastExecutionDate": "2017-03-31T02:48:18.843",
-                "Details": null,
-                "ArtifactName": "3.309893.KBAKGIF0PGUZHO3SAIPWE25TTESIB35OB",
-                "UserID": 1067213,
-                "UserName": "Saldana, Javier",
-                "Action": 1,
-                "ActionName": "View",
-                "ArtifactTypeID": 10
-            };
+            vm.item =
+          {
+              "ArtifactID": 1047573,
+              "AuditID": 104999,
+              "LastExecutionDate": "2017-03-31T18:06:44.663Z",
+              "Details": {
+                  "field": [
+                    {
+                        "@id": "1035357",
+                        "@type": "5",
+                        "@name": "Responsive Designation",
+                        "@formatstring": "",
+                        "unSetChoice": "1035871",
+                        "setChoice": "1035891"
+                    },
+                    {
+                        "@id": "1035377",
+                        "@type": "8",
+                        "@name": "Issue Designation",
+                        "@formatstring": "",
+                        "setChoice": "1038096"
+                    },
+                    {
+                        "@id": "1035387",
+                        "@type": "8",
+                        "@name": "Privilege Designation",
+                        "@formatstring": "",
+                        "setChoice": [
+                          "1038089",
+                          "1038090"
+                        ]
+                    },
+                    {
+                        "@id": "1038055",
+                        "@type": "5",
+                        "@name": "Confidential Designation",
+                        "@formatstring": "",
+                        "setChoice": "1038092"
+                    },
+                    {
+                        "@id": "1038062",
+                        "@type": "5",
+                        "@name": "RAR - Designation",
+                        "@formatstring": "",
+                        "unSetChoice": "1038468"
+                    },
+                    {
+                        "@id": "1038164",
+                        "@type": "4",
+                        "@name": "Attorney Review Comments",
+                        "@formatstring": "",
+                        "oldValue": null,
+                        "newValue": "sdsdfsdf"
+                    },
+                    {
+                        "@id": "1049078",
+                        "@type": "5",
+                        "@name": "RAR2 - Designation",
+                        "@formatstring": "",
+                        "unSetChoice": "1049080",
+                        "setChoice": "1049079"
+                    }
+                  ]
+              },
+              "ArtifactName": "3.192626.L5KTES2B33FCCOB0ED3GL2LLEFKNYOH5B",
+              "UserID": 1067213,
+              "UserName": "Saldana, Javier",
+              "Action": 3,
+              "ActionName": "Update",
+              "ArtifactTypeID": 10
+          }
+
         }
         function initials() {
             var name = String(vm.item.UserName);
