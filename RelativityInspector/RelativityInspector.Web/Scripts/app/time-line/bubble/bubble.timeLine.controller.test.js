@@ -11,7 +11,6 @@
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'bubble';
-        vm.sayHello = sayHello;
         vm.initials = initials;
 
         activate();
@@ -40,9 +39,6 @@
                 }
             }
             return name.substr(0, 1).toUpperCase();
-        }
-        function sayHello() {
-            alert(vm.item.UserName);
         }
     }
 })();

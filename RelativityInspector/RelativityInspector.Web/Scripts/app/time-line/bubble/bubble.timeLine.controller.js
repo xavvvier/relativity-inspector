@@ -5,13 +5,13 @@
         .module('app.timeLine')
         .controller('bubble.timeLine', bubble);
 
-    bubble.$inject = ['$location']; 
+    bubble.$inject = ['$location', '$mdDialog'];
 
-    function bubble($location) {
+    function bubble($location, $mdDialog) {
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'bubble';
-        vm.sayHello = sayHello;
+        vm.displayDetail = displayDetail;
         vm.initials = initials;
 
         activate();
@@ -27,8 +27,13 @@
             }
             return name.substr(0, 1).toUpperCase();
         }
-        function sayHello() {
-            alert(2);
+        function displayDetail(ev) {
+            $mdDialog.show({
+                contentElement: '#Artifact' + vm.item.AuditID,
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true
+            });
         }
     }
 })();
