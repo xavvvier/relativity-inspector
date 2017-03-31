@@ -19,7 +19,7 @@
     <script src="Scripts/app/core/app.core.module.js"></script>
     <script src="Scripts/app/core/signalR/factory/signalR.core.factory.js"></script>
     <script src="Scripts/app/core/objectType/objectType.core.factory.js"></script>
-    
+
     <script src="Scripts/app/time-line/app.timeLine.module.js"></script>
     <script src="Scripts/app/time-line/panel/panel.timeLine.directive.js"></script>
     <script src="Scripts/app/time-line/panel/panel.timeLine.controller.js"></script>
@@ -50,7 +50,11 @@
                     <md-subheader class="md-primary">
                         <span ng-bind="inpect.Name"></span>
                     </md-subheader>
-                    <time-line items="T.data[inpect.ArtifactID]"></time-line>
+                    <md-content>
+                        <div ng-if="T.data[inpect.ArtifactID]">
+                            <panel-time-line items="T.data[inpect.ArtifactID]"></panel-time-line>
+                        </div>
+                    </md-content>
                 </section>
             </md-content>
         </div>
