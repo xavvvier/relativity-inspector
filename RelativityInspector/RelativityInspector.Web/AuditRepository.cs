@@ -103,6 +103,31 @@ and ID > {last}";
                 }
             }
         }
+
+        internal IEnumerable<Artifact> ObjectTypes()
+        {
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                using (var command = 
+                    new SqlCommand($@"select ArtifactID, Name
+                        from EDDSDBO.ObjectType
+                        order by Name
+                        ", connection))
+                {
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        return reader.Cast<IDataRecord>()
+                            .Select(x => new Artifact
+                            {
+                                ArtifactID = x.GetInt32(0),
+                                Name = x.GetString(1)
+                            }).ToList();
+                    }
+                } 
+            }
+        }
+
         public object ToObject(string data)
         {
             if (!string.IsNullOrWhiteSpace(data)

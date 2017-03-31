@@ -1,7 +1,6 @@
 ﻿using RelativityInspector.Web.Models;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Web.Http;
 
 namespace RelativityInspector.Web.Controllers
@@ -21,6 +20,5 @@ namespace RelativityInspector.Web.Controllers
             }
             return result;
         }
-
     }
 }
