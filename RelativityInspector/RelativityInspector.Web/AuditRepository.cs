@@ -109,9 +109,9 @@ and ID > {last}";
             using (var connection = new SqlConnection(ConnectionString))
             {
                 using (var command = 
-                    new SqlCommand($@"select ArtifactID, Name
-                        from EDDSDBO.ObjectType
-                        order by Name
+                    new SqlCommand($@"  select ArtifactTypeID as ArtifactID, ArtifactType as Name
+                              from EDDSDBO.ArtifactType
+                              order by Name 
                         ", connection))
                 {
                     connection.Open();
