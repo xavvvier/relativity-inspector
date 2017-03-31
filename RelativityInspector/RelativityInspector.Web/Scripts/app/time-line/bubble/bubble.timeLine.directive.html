@@ -16,10 +16,10 @@
                 <h2>{{bubble.item.UserName}}</h2>
                 <p>
                     Object: <code>{{bubble.item.ArtifactName}}</code><br />
-                    Date: <code>{{bubble.item.LastExecutionDate}}</code><br />
+                    Date: <code>{{bubble.item.LastExecutionDate | date:'medium'}}</code><br />
                     Action: <code>{{bubble.item.ActionName}}</code><br><br>
                 </p>
             </md-dialog>
         </div>
     </div>
-</div>
+</div> 
