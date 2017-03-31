@@ -2,7 +2,7 @@
     <div ng-if="field['unSetChoice'].length">
         <small>Before</small>
         <ul ng-repeat="choice in field['unSetChoice'] track by $index">
-            <li ng-bind="bubble.binding(+choice)[+choice]"></li>
+            <li class="text-before" ng-bind="bubble.binding(+choice)[+choice]"></li>
         </ul>
     </div>
     <div ng-if="field['setChoice'].length">
@@ -15,7 +15,7 @@
 <div ng-if="!bubble.isArray(field['unSetChoice']) && !bubble.isArray(field['setChoice'])">
     <div ng-if="field['unSetChoice']">
         <small>Before</small>
-        <div ng-bind="bubble.binding(+field['unSetChoice'])[+field['unSetChoice']]"></div>
+        <div class="text-before" ng-bind="bubble.binding(+field['unSetChoice'])[+field['unSetChoice']]"></div>
     </div>
     <div ng-if="field['setChoice']">
         <small>After</small>
