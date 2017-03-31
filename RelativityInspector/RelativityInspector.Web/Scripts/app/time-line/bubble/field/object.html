@@ -1,9 +1,24 @@
-﻿
-<div ng-if="field['oldValue']">
-    <small>Before</small>
-    <span ng-bind="field['oldValue']"></span>
+﻿<div ng-if="bubble.isArray(field['oldValue']) || bubble.isArray(field['newValue'])">
+    <div ng-if="field['oldValue'].length">
+        <small>Before</small>
+        <ul ng-repeat="choice in field['oldValue'] track by $index">
+            <li class="text-before" ng-bind="bubble.binding(+choice)[+choice]"></li>
+        </ul>
+    </div>
+    <div ng-if="field['newValue'].length">
+        <small>After</small>
+        <ul ng-repeat="choice in field['newValue'] track by $index">
+            <li ng-bind="bubble.binding(+choice)[+choice]"></li>
+        </ul>
+    </div>
 </div>
-<div ng-if="field['newValue']">
-    <small>After</small>
-    <span ng-bind="field['newValue']"></span>
+<div ng-if="!bubble.isArray(field['oldValue']) && !bubble.isArray(field['newValue'])">
+    <div ng-if="field['oldValue']">
+        <small>Before</small>
+        <div class="text-before" ng-bind="bubble.binding(+field['oldValue'])[+field['oldValue']]"></div>
+    </div>
+    <div ng-if="field['newValue']">
+        <small>After</small>
+        <div ng-bind="bubble.binding(+field['newValue'])[+field['newValue']]"></div>
+    </div>
 </div>
