@@ -18,18 +18,19 @@
     <script src="Scripts/app/main/main.controller.js"></script>
     <script src="Scripts/app/core/app.core.module.js"></script>
     <script src="Scripts/app/core/signalR/factory/signalR.core.factory.js"></script>
+    <script src="Scripts/app/core/objectType/objectType.core.factory.js"></script>
 
 </head>
 <body ng-app="app">
     <div ng-controller="main as T" layout-fill="" layout="column">
         <md-toolbar md-scroll-shrink>
-            <div class="md-toolbar-tools">Relativity Inpector</div>
+            <div class="md-toolbar-tools">Relativity Inspector</div>
         </md-toolbar>
         <div layout="row" layout-align="space-around">
             <md-select ng-model="T.selectedTypes"
                        multiple="true"
                        placeholder="Object Type"
-                       ng-model-options="{trackBy: '$value.ArtifactTypeID'}">
+                       ng-model-options="{trackBy: '$value.ArtifactID'}">
                 <md-option ng-value="objectType" ng-repeat="objectType in T.objectTypes">
                     {{ objectType.Name}}
                 </md-option>
@@ -41,10 +42,13 @@
                     <md-subheader class="md-primary">
                         <span ng-bind="inpect.Name"></span>
                     </md-subheader>
-                    <time-line items="T.data[inpect.ArtifactTypeID]"></time-line>
+                    <time-line items="T.data[inpect.ArtifactID]"></time-line>
                 </section>
             </md-content>
         </div>
+    </div>
+    <div>
+        {{T.objectTypes | json}}
     </div>
 </body>
 </html>

@@ -173,6 +173,7 @@
     <Content Include="Scripts\app\app.module.js" />
     <Content Include="Scripts\app\app.run.js" />
     <Content Include="Scripts\app\core\app.core.module.js" />
+    <Content Include="Scripts\app\core\objectType\objectType.core.factory.js" />
     <Content Include="Scripts\app\core\signalR\factory\signalR.core.factory.js" />
     <Content Include="Scripts\app\dist\app.dist.js" />
     <Content Include="Scripts\app\main\main.controller.js" />
