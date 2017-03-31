@@ -184,6 +184,7 @@
     <Content Include="Scripts\app\time-line\bubble\bubble.timeLine.directive.css" />
     <Content Include="Scripts\app\time-line\bubble\bubble.timeLine.directive.html" />
     <Content Include="Scripts\app\time-line\bubble\bubble.timeLine.directive.js" />
+    <Content Include="Scripts\app\time-line\bubble\field\object.html" />
     <Content Include="Scripts\app\time-line\bubble\field\choice.html" />
     <Content Include="Scripts\app\time-line\panel\panel.timeLine.controller.js" />
     <Content Include="Scripts\app\time-line\panel\panel.timeLine.directive.css" />
