@@ -16,7 +16,7 @@
         vm.isArray = angular.isArray;
         vm.binding = artifactCore.binding;
 
-        activate();
+        activate(); 
 
         function activate() { }
         function initials() {
