@@ -37,7 +37,7 @@
             $interval(() => {
                 vm.adutis.push({
                     "ArtifactID": 1047559,
-                    "AuditID": 104324,
+                    "AuditID": Math.round((Math.random() * 1000)),
                     "LastExecutionDate": "2017-03-31T02:48:18.843",
                     "Details": null,
                     "ArtifactName": "3.309893.KBAKGIF0PGUZHO3SAIPWE25TTESIB35OB",

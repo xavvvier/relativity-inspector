@@ -35,7 +35,7 @@
         }
 
         function clearAudits() {
-            console.log('Clear item', vm.sectionTimers.splice(0, 1), vm.sectionTimers.length);
+            vm.sectionTimers.splice(0, 1);
         }
 
     }
