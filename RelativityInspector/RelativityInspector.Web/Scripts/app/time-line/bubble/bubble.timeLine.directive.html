@@ -1,7 +1,9 @@
 ﻿<div class="bubble">
-    <div class='pin green'>
-        <div class="initials">E</div>
+    <div class='pin green' ng-click="bubble.sayHello()">
+        <div class="initials" ng-bind="bubble.initials()" 
+             title="{{bubble.item.UserName + ': ' + bubble.item.ActionName + ' ' + bubble.item.ArtifactName}}"></div>
     </div>
-    <div class='pulse'></div>
+    <div class='pulse'>
+        <div class="active"></div>
+    </div>
 </div>
-{{item | json}}

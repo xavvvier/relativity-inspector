@@ -178,6 +178,7 @@
     <Content Include="Scripts\app\dist\app.dist.js" />
     <Content Include="Scripts\app\main\main.controller.js" />
     <Content Include="Scripts\app\time-line\app.timeLine.module.js" />
+    <Content Include="Scripts\app\time-line\bubble\bubble.timeLine.controller.test.js" />
     <Content Include="Scripts\app\time-line\bubble\bubble.timeLine.controller.js" />
     <Content Include="Scripts\app\time-line\bubble\bubble.timeLine.directive.css" />
     <Content Include="Scripts\app\time-line\bubble\bubble.timeLine.directive.html" />
