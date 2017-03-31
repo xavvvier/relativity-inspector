@@ -918,9 +918,11 @@
     <Compile Include="AuditHub.cs" />
     <Compile Include="AuditRepository.cs" />
     <Compile Include="Controllers\AuditController.cs" />
+    <Compile Include="Controllers\ObjectTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Artifact.cs" />
     <Compile Include="Models\AuditItem.cs" />
     <Compile Include="Models\InspectResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
