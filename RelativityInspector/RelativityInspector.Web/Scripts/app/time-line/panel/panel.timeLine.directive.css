@@ -1,8 +1,8 @@
-panel-time-line{
+panel-time-line {
     width: 100%;
 }
 
-.item{
+.item {
     width: 0;
     height: 30px;
     display: inline-block;
@@ -13,7 +13,7 @@ panel-time-line{
 
 .panel-content {
     /* width: 100%; */
-    height: 250px;
+    height: 150px;
     /* border: 1px solid grey; */
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -37,8 +37,14 @@ panel-time-line{
     padding-right: 50px;
 }
 
-.line-time {padding-top: 150px;}
+.line-time {
+    padding-top: 30px;
+}
 
-.horizontal-line {
-    border: 1px solid #d47272;
+.time-details {
+    color: #c8c8c8;
+    font-size: x-small;
+    word-break: initial;
+    top: -15px;
+    position: absolute;
 }

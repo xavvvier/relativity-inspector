@@ -28,11 +28,18 @@
         function link(scope, element, attrs) {
             var elementJq = $('.panel-content', element);
             var inirwidth = elementJq.get(0).clientWidth;
+            var advantage = 4;
+            var flag = 0;
             $interval(() => {
                 if (elementJq.get(0).scrollWidth > inirwidth) {
                     elementJq.animate({
-                        scrollLeft: (inirwidth += 14) - elementJq.get(0).clientWidth
-                    }, 250);
+                        scrollLeft: (inirwidth += 15) - elementJq.get(0).clientWidth
+                    }, 450);
+                    if (advantage < flag) {
+                        scope.panel.clearAudits();
+                    } else {
+                        flag++;
+                    }
                 }
             }, 500);
         }

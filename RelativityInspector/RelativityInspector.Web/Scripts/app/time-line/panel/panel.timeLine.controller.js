@@ -13,7 +13,9 @@
         vm.title = 'panel';
         vm.nowTime = new Date();
         vm.sectionTimers = [];
-        vm.positionX = 10;
+        vm.clearAudits = clearAudits;
+        vm.globalIndex = 0;
+        vm.positionX = 15;
 
         activate();
 
@@ -27,8 +29,13 @@
                     oldTime: vm.nowTime,
                     time: vm.nowTime = new Date(),
                     items: vm.items.splice(0, vm.items.length),
+                    index: vm.globalIndex++
                 });
             }, 500);
+        }
+
+        function clearAudits() {
+            vm.sectionTimers.splice(0, 1);
         }
 
     }

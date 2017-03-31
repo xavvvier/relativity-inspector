@@ -2,15 +2,15 @@
     <div class="line-time">
         <div class="x-time"
              ng-style="{
-                    left : (panel.positionX * $index) + 'px'
+                    left : (panel.positionX * xTime.index) + 'px'
                  }"
-             ng-init="xTime.index=$index; panel.index = $index"
              ng-repeat="xTime in panel.sectionTimers">
             <div ng-repeat="item in xTime.items"
                  class="item">
                 <bubble-time-line item="item"></bubble-time-line>
             </div>
+            <span ng-if="(xTime.index % 10) === 0"
+                  class="time-details">{{xTime.time|date: 'mediumTime'}}</span>
         </div>
     </div>
-    <div class="horizontal-line"></div>
 </div>
