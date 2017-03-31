@@ -45,16 +45,14 @@
             </md-select>
         </div>
         <div layout="row" layout-align="space-around">
-            <md-content>
+            <md-content style="width:100%">
                 <section ng-repeat="inpect in T.selectedTypes">
                     <md-subheader class="md-primary">
                         <span ng-bind="inpect.Name"></span>
                     </md-subheader>
-                    <md-content>
-                        <div ng-if="T.data[inpect.ArtifactID]">
-                            <panel-time-line items="T.data[inpect.ArtifactID]"></panel-time-line>
-                        </div>
-                    </md-content>
+                    <div ng-init="T.data[inpect.ArtifactID] = []">
+                        <panel-time-line items="T.data[inpect.ArtifactID]"></panel-time-line>
+                    </div>
                 </section>
             </md-content>
         </div>

@@ -13,7 +13,7 @@ panel-time-line{
 
 .panel-content {
     /* width: 100%; */
-    height: 250px;
+    height: 150px;
     /* border: 1px solid grey; */
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -37,8 +37,4 @@ panel-time-line{
     padding-right: 50px;
 }
 
-.line-time {padding-top: 150px;}
-
-.horizontal-line {
-    border: 1px solid #d47272;
-}
+.line-time {padding-top: 30px;}
