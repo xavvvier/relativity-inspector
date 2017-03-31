@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RelativityInspector.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -89,7 +90,7 @@ and ID > {last}";
                                 UserID = x.GetInt32(3),
                                 UserName = x.GetString(4),
                                 Details = ToObject(x.GetString(5)),
-                                LastExecutionDate = x.GetDateTime(6),
+                                LastExecutionDate = DateTime.SpecifyKind(x.GetDateTime(6), DateTimeKind.Utc),
                                 Action = x.GetInt32(7),
                                 ActionName = x.GetString(8),
                                 ArtifactTypeID = x.GetInt32(9)
