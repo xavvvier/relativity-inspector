@@ -41,19 +41,10 @@
                     <md-subheader class="md-primary">
                         <span ng-bind="inpect.Name"></span>
                     </md-subheader>
-                    <md-list layout-padding>
-                        <md-list-item class="md-3-line"
-                                      ng-repeat="audit in T.data[inpect.ArtifactTypeID]">
-                            <div class="md-list-item-text">
-                                <h3>{{T.artifacts[audit.ArtifactID]}}</h3>
-                            </div>
-                        </md-list-item>
-                    </md-list>
+                    <time-line items="T.data[inpect.ArtifactTypeID]"></time-line>
                 </section>
             </md-content>
         </div>
-        <div layout="row" layout-align="space-around">
-            {{T.data | json}}
-        </div>
+    </div>
 </body>
 </html>

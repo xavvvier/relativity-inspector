@@ -21,6 +21,7 @@
         vm.objectTypes = [
             { Name: 'Document', ArtifactTypeID: 10 },
             { Name: 'Seach', ArtifactTypeID: 15 },
+            { Name: 'Custpdian', ArtifactTypeID: 1000040 },
         ];
 
         activate();

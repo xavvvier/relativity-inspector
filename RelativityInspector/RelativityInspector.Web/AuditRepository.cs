@@ -1,13 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RelativityInspector.Web.Models;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
 using System.Xml;
 
 namespace RelativityInspector.Web
@@ -30,40 +28,41 @@ namespace RelativityInspector.Web
             using (var connection = new SqlConnection(ConnectionString))
             {
                 string initialQuery = $@" 
-select top 10
-    AR.ID, 
-    AR.ArtifactID, 
-    AO.TextIdentifier as ArtifactName,
-    AR.UserID,
-    AU.FullName,
-    isnull(Details,'') as Details, 
-    TimeStamp,
-    AR.Action,
-    AA.Action as ActionName,
-    AO.ArtifactTypeID
-from  EDDSDBO.AuditRecord_PrimaryPartition AR with (NOLOCK)
-join EDDSDBO.AuditObject AO with (NOLOCK) on AR.ArtifactID = AO.ArtifactID
-join EDDSDBO.AuditUser AU with (NOLOCK) on AR.UserID = AU.UserID
-join EDDSDBO.AuditAction AA with (NOLOCK) on AR.Action = AA.AuditActionID
-where AR.Action<= 9 and AR.UserID not in (9, 777)
-order by ID desc";
+SELECT TOP 10 CONVERT( BIGINT, AR.ID) [ID],
+              AR.ArtifactID,
+              AO.TextIdentifier AS ArtifactName,
+              AR.UserID,
+              AU.FullName,
+              isnull(Details, '') AS Details,
+              TimeStamp,
+              AR.ACTION,
+              AA.ACTION AS ActionName,
+              AO.ArtifactTypeID
+FROM EDDSDBO.AuditRecord_PrimaryPartition AR WITH (NOLOCK)
+     JOIN EDDSDBO.AuditObject AO WITH (NOLOCK) ON AR.ArtifactID = AO.ArtifactID
+     JOIN EDDSDBO.AuditUser AU WITH (NOLOCK) ON AR.UserID = AU.UserID
+     JOIN EDDSDBO.AuditAction AA WITH (NOLOCK) ON AR.ACTION = AA.AuditActionID
+WHERE AR.ACTION <= 9
+      AND AR.UserID NOT IN(9, 777)
+order by ID desc
+";
                 string lastQuery = $@"
-select
-    AR.ID, 
-    AR.ArtifactID, 
-    AO.TextIdentifier as ArtifactName,
-    AR.UserID,
-    AU.FullName,
-    isnull(Details,'') as Details, 
-    TimeStamp,
-    AR.Action,
-    AA.Action as ActionName,
-    AO.ArtifactTypeID
-from  EDDSDBO.AuditRecord_PrimaryPartition AR with (NOLOCK)
-join EDDSDBO.AuditObject AO with (NOLOCK) on AR.ArtifactID = AO.ArtifactID
-join EDDSDBO.AuditUser AU with (NOLOCK) on AR.UserID = AU.UserID
-join EDDSDBO.AuditAction AA with (NOLOCK) on AR.Action = AA.AuditActionID
-where AR.Action<= 9 and AR.UserID not in (9, 777)
+SELECT CONVERT( BIGINT, AR.ID) [ID],
+              AR.ArtifactID,
+              AO.TextIdentifier AS ArtifactName,
+              AR.UserID,
+              AU.FullName,
+              isnull(Details, '') AS Details,
+              TimeStamp,
+              AR.ACTION,
+              AA.ACTION AS ActionName,
+              AO.ArtifactTypeID
+FROM EDDSDBO.AuditRecord_PrimaryPartition AR WITH (NOLOCK)
+     JOIN EDDSDBO.AuditObject AO WITH (NOLOCK) ON AR.ArtifactID = AO.ArtifactID
+     JOIN EDDSDBO.AuditUser AU WITH (NOLOCK) ON AR.UserID = AU.UserID
+     JOIN EDDSDBO.AuditAction AA WITH (NOLOCK) ON AR.ACTION = AA.AuditActionID
+WHERE AR.ACTION <= 9
+      AND AR.UserID NOT IN(9, 777)
 and ID > {last}";
                 var query = last == 0 ? initialQuery : lastQuery;
                 connection.Open();
@@ -106,7 +105,9 @@ and ID > {last}";
         }
         public object ToObject(string data)
         {
-            if (!string.IsNullOrWhiteSpace(data) && data.Trim().StartsWith("<"))
+            if (!string.IsNullOrWhiteSpace(data)
+                && data.Trim().StartsWith("<")
+                && !data.Equals("<auditElement />"))
             {
                 XmlDocument doc = new XmlDocument();
                 doc.LoadXml(data);
@@ -124,14 +125,14 @@ and ID > {last}";
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
-                using (var command = 
+                using (var command =
                     new SqlCommand($@"select TextIdentifier 
                         from EDDSDBO.AuditObject 
                         where ArtifactID = {artifactID} ", connection))
                 {
                     connection.Open();
                     return command.ExecuteScalar() as string;
-                } 
+                }
             }
         }
     }
