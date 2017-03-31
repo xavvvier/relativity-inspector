@@ -27,7 +27,7 @@
     <script src="Scripts/app/time-line/bubble/bubble.timeLine.controller.js"></script>
     <link href="Scripts/app/time-line/panel/panel.timeLine.directive.css" rel="stylesheet" />
     <link href="Scripts/app/time-line/bubble/bubble.timeLine.directive.css" rel="stylesheet" />
-
+    <script src="Scripts/app/core/artifact/artifact.core.factory.js"></script>
 </head>
 <body ng-app="app">
     <div ng-controller="main as T" layout-fill="" layout="column">
@@ -45,8 +45,7 @@
             </md-select>
         </div>
         <div layout="row" layout-align="space-around">
-            <md-content 
-                        
+            <md-content ng-if="T.signalRCore.status === 1"
                         style="width:100%">
                 <section ng-repeat="inpect in T.selectedTypes">
                     <md-subheader class="md-primary">
@@ -57,10 +56,10 @@
                     </div>
                 </section>
             </md-content>
+            <md-content ng-if="T.signalRCore.status !== 1"
+                        style="width:100%">
+                Connecting...
+            </md-content>
         </div>
-    </div>
-    <div>
-        {{T.objectTypes | json}}
-    </div>
 </body>
 </html>

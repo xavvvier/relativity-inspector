@@ -20,7 +20,10 @@
         function binding(artifactID) {
             if (!artifacts[+artifactID]) {
                 signalRCore.getTextIdentifier(+artifactID)
-                    .then(x => artifacts[+artifactID] = x);
+                    .then(x => {
+                        console.log('binding', artifactID, x);
+                        artifacts[+artifactID] = x
+                    });
             }
             return artifacts;
         }

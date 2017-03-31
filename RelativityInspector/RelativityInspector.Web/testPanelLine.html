@@ -36,7 +36,7 @@
         <md-toolbar md-scroll-shrink>
             <div class="md-toolbar-tools">Test Panel Line</div>
         </md-toolbar>
-        <div layout="row" layout-align="space-around">
+        <div layout="row" layout-align="space-around" ng-if="T.signalRCore.status === 1">
             <panel-time-line items="T.adutis"></panel-time-line>
         </div>
     </div>

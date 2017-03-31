@@ -12,6 +12,7 @@
         var listeners = {
             newData: []
         };
+        var factory = {};
         var status = -1;
         var hub = new Hub('auditHub', {
 
@@ -40,21 +41,23 @@
             rootPath: 'SignalR',
 
             stateChanged: function (state) {
-                $log.info('stateChanged', state);
-                switch (state.newState) {
-                    case $.signalR.connectionState.connecting:
-                        status = 0;
-                        break;
-                    case $.signalR.connectionState.connected:
-                        status = 1;
-                        break;
-                    case $.signalR.connectionState.reconnecting:
-                        status = 2;
-                        break;
-                    case $.signalR.connectionState.disconnected:
-                        status = 3;
-                        break;
-                }
+                $timeout(() => {
+                    $log.info('stateChanged', state);
+                    switch (state.newState) {
+                        case $.signalR.connectionState.connecting:
+                            factory.status = 0;
+                            break;
+                        case $.signalR.connectionState.connected:
+                            factory.status = 1;
+                            break;
+                        case $.signalR.connectionState.reconnecting:
+                            factory.status = 2;
+                            break;
+                        case $.signalR.connectionState.disconnected:
+                            factory.status = 3;
+                            break;
+                    }
+                });
             }
         });
 
@@ -72,8 +75,8 @@
             listeners.newData.push(listener);
         }
 
-        return {
-            status : status,
+        return factory = {
+            status: status,
             getTextIdentifier: getTextIdentifier,
             registerNewData: registerNewData,
         };
