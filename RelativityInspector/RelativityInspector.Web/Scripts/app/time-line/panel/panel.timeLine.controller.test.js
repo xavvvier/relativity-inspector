@@ -43,7 +43,7 @@
                     "ArtifactName": "3.309893.KBAKGIF0PGUZHO3SAIPWE25TTESIB35OB",
                     "UserID": 1067213,
                     "UserName": "Saldana, Javier",
-                    "Action": 1,
+                    "Action": Math.round((Math.random() * 10)),
                     "ActionName": "View",
                     "ArtifactTypeID": 10
                 });
