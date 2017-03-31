@@ -11,9 +11,9 @@ namespace RelativityInspector.Web
         {
             IEnumerable<string> jss = new string[] {
                 "~/Scripts/jquery-1.6.4.js",
+                "~/Scripts/angular.js",
                 "~/Scripts/jquery.signalR-2.2.1.js",
                 "~/signalr/hubs",
-                "~/Scripts/angular.js",
                 "~/Scripts/angular-material/angular-material.js",
                 "~/node_modules/angular-signalr-hub/signalr-hub.js",
             };
