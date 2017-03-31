@@ -1,3 +1,5 @@
 ﻿angular.module("app", [
-    'app.core'
+    'app.core',
+    'app.dist',
+
 ]);

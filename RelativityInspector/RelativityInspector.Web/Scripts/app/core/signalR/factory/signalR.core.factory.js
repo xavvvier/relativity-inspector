@@ -5,9 +5,9 @@
         .module('app.core')
         .factory('signalR.core', signalR);
 
-    signalR.$inject = ['Hub', '$log', '$timeout'];
+    signalR.$inject = ['Hub', '$log', '$timeout', '$q'];
 
-    function signalR(Hub, $log, $timeout) {
+    function signalR(Hub, $log, $timeout, $q) {
 
         var listeners = {
             newData: []
@@ -18,7 +18,7 @@
             //client side methods
             listeners: {
                 'newData': function (data) {
-                    angular.forEach(listeners.newData,  x => {
+                    angular.forEach(listeners.newData, x => {
                         $timeout(y => x.call(null, data));
                     });
                 },
@@ -58,8 +58,14 @@
             }
         });
 
-        function textIdentifier(artifactID) {
-            return hub.TextIdentifier(artifactID);
+        function getTextIdentifier(artifactID) {
+            var defered = $q.defer();
+            var promise = defered.promise;
+
+            hub.TextIdentifier(artifactID)
+                .then(defered.resolve);
+
+            return promise;
         };
 
         function registerNewData(listener) {
@@ -67,7 +73,7 @@
         }
 
         return {
-            textIdentifier: textIdentifier,
+            getTextIdentifier: getTextIdentifier,
             registerNewData: registerNewData,
         };
 

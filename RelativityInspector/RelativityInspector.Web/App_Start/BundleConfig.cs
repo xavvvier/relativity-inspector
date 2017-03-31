@@ -15,6 +15,8 @@ namespace RelativityInspector.Web
                 "~/Scripts/jquery.signalR-2.2.1.js",
                 "~/signalr/hubs",
                 "~/Scripts/angular-material/angular-material.js",
+                "~/Scripts/angular-animate.js",
+                "~/Scripts/angular-aria.js",
                 "~/node_modules/angular-signalr-hub/signalr-hub.js",
             };
 
@@ -26,6 +28,7 @@ namespace RelativityInspector.Web
             bundles.Add(new StyleBundle("~/dist/css")
                 .Include(new string[] {
                         "~/Content/angular-material.css",
+                        "~/Content/angular-material.layouts.css",
                         "~/Content/main.css",
                     }));
 

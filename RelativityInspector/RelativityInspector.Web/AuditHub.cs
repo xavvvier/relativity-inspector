@@ -16,6 +16,7 @@ namespace RelativityInspector.Web
         public string TextIdentifier(int artifactID)
         {
             return new AuditRepository().ArtifactTextIdentifier(artifactID);
+            //return "test skladj sdklaj";
         }
     }
 }

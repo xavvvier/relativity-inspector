@@ -14,16 +14,46 @@
     <script src="signalr/hubs" type="text/javascript"></script>
 
     <script src="Scripts/app/app.module.js"></script>
+    <script src="Scripts/app/dist/app.dist.js"></script>
     <script src="Scripts/app/main/main.controller.js"></script>
     <script src="Scripts/app/core/app.core.module.js"></script>
     <script src="Scripts/app/core/signalR/factory/signalR.core.factory.js"></script>
 
 </head>
 <body ng-app="app">
-    <div ng-controller="main as T">
-        <div>
+    <div ng-controller="main as T" layout-fill="" layout="column">
+        <md-toolbar md-scroll-shrink>
+            <div class="md-toolbar-tools">Relativity Inpector</div>
+        </md-toolbar>
+        <div layout="row" layout-align="space-around">
+            <md-select ng-model="T.selectedTypes"
+                       multiple="true"
+                       placeholder="Object Type"
+                       ng-model-options="{trackBy: '$value.ArtifactTypeID'}">
+                <md-option ng-value="objectType" ng-repeat="objectType in T.objectTypes">
+                    {{ objectType.Name}}
+                </md-option>
+            </md-select>
+        </div>
+        <div layout="row" layout-align="space-around">
+            <md-content>
+                <section ng-repeat="inpect in T.selectedTypes">
+                    <md-subheader class="md-primary">
+                        <span ng-bind="inpect.Name"></span>
+                    </md-subheader>
+                    <md-list layout-padding>
+                        <md-list-item class="md-3-line"
+                                      ng-repeat="audit in T.data[inpect.ArtifactTypeID]">
+                            <div class="md-list-item-text">
+                                <h3>{{T.artifacts[audit.ArtifactID]}}</h3>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </section>
+            </md-content>
+        </div>
+        <div layout="row" layout-align="space-around">
             {{T.data | json}}
         </div>
-    </div>
 </body>
 </html>

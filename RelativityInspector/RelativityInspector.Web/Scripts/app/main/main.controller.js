@@ -12,6 +12,17 @@
         var vm = this;
         vm.title = 'main';
 
+        vm.data = {};
+        vm.artifacts = {};
+        vm.selectedTypes = [{
+            ArtifactTypeID: 10
+        }];
+        vm.getTextIdentifier = getTextIdentifier;
+        vm.objectTypes = [
+            { Name: 'Document', ArtifactTypeID: 10 },
+            { Name: 'Seach', ArtifactTypeID: 15 },
+        ];
+
         activate();
 
         function activate() {
@@ -19,8 +30,23 @@
         }
 
         function newData(data) {
-            vm.data = data;
-            $log.log(data);
+
+            angular.forEach(data, x => {
+
+                if (!vm.data[x.ArtifactTypeID]) {
+                    vm.data[x.ArtifactTypeID] = [];
+                }
+
+                vm.data[x.ArtifactTypeID] = vm.data[x.ArtifactTypeID].concat(x);
+
+                !vm.artifacts[x.ArtifactID]
+                    && getTextIdentifier(x.ArtifactID);
+            });
+        }
+
+        function getTextIdentifier(id) {
+            signalRCore.getTextIdentifier(id)
+                .then(x => vm.artifacts[id] = x);
         }
     }
 })();
