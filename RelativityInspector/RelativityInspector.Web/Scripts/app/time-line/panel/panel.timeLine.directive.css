@@ -1,0 +1,50 @@
+panel-time-line {
+    width: 100%;
+}
+
+.item {
+    width: 0;
+    height: 30px;
+    display: inline-block;
+    /* margin: 3px; */
+    position: relative;
+    right: 40px;
+}
+
+.panel-content {
+    /* width: 100%; */
+    height: 150px;
+    /* border: 1px solid grey; */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    position: relative;
+}
+
+
+.x-time {
+    border-left: 1px solid #efefef;
+    border-bottom: 1px solid #d2d2d2;
+    display: block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    padding-bottom: 20px;
+}
+
+.scroll-line {
+    padding-right: 50px;
+}
+
+.line-time {
+    padding-top: 30px;
+}
+
+.time-details {
+    color: #c8c8c8;
+    font-size: x-small;
+    word-break: initial;
+    top: -15px;
+    position: absolute;
+}

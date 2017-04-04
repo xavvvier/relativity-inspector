@@ -1,0 +1,97 @@
+﻿<div class="bubble">
+    <div class='pin' ng-class="{
+            'blue':bubble.item.Action == 1,
+            'red': bubble.item.Action == 9,
+            'green': [3,4,5,6].indexOf(bubble.item.Action)!=-1
+         }" ng-click="bubble.displayDetail($event)">
+        <div class="initials" ng-bind="bubble.initials()"
+             title="{{bubble.item.UserName + ': ' + bubble.item.ActionName + ' ' + bubble.item.ArtifactName}}"></div>
+    </div>
+    <div class='pulse'>
+        <div class="active"></div>
+    </div>
+    <div style="visibility: hidden">
+        <div class="md-dialog-container"
+             id="Artifact{{bubble.item.AuditID}}">
+            <md-dialog aria-label="{{bubble.item.UserName}}">
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>{{bubble.item.UserName}}</h2>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content ng-cloak>
+                    <div class="md-dialog-content">
+                        <div layout="row" layout-xs="column">
+                            <div flex>
+                                <p>
+                                    Object: <code>{{bubble.item.ArtifactName}}</code><br />
+                                    Date: <code>{{bubble.item.LastExecutionDate | date:'medium'}}</code><br />
+                                    Action: <code>{{bubble.item.ActionName}}</code><br><br>
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <div layout="row" layout-xs="column" ng-if="bubble.isArray(bubble.item.Details.field)">
+                                <div ng-repeat="field in bubble.item.Details.field">
+                                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" class="item-field">
+                                        <md-card-title>
+                                            <md-card-title-text>
+                                                <strong>
+                                                    {{field['@name']}}
+                                                </strong>
+                                            </md-card-title-text>
+                                        </md-card-title>
+                                        <md-card-content class="field-content">
+                                            <div ng-switch on="field['@type']">
+                                                <div ng-switch-when="5|8" ng-switch-when-separator="|">
+                                                    <div ng-include="'Scripts/app/time-line/bubble/field/choice.html'"></div>
+                                                </div>
+                                                <div ng-switch-when="10" ng-switch-when-separator="|">
+                                                    <div ng-include="'Scripts/app/time-line/bubble/field/object.html'"></div>
+                                                </div>
+                                                <div ng-switch-when="13" ng-switch-when-separator="|">
+                                                    <div ng-include="'Scripts/app/time-line/bubble/field/multiobject.html'"></div>
+                                                </div>
+                                                <div ng-switch-when="0|1|2|3|4|6|7" ng-switch-when-separator="|">
+                                                    <div ng-include="'Scripts/app/time-line/bubble/field/simpleValue.html'"></div>
+                                                </div>
+                                            </div>
+                                        </md-card-content>
+                                    </md-card>
+                                </div>
+                            </div>
+                            <div ng-if="!bubble.isArray(bubble.item.Details.field)" layout="row" layout-xs="column">
+                                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" class="item-field"
+                                         ng-init="field = bubble.item.Details.field">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <strong>
+                                                {{field['@name']}}
+                                            </strong>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-card-content class="field-content">
+                                        <div ng-switch on="field['@type']">
+                                            <div ng-switch-when="5|8" ng-switch-when-separator="|">
+                                                <div ng-include="'Scripts/app/time-line/bubble/field/choice.html'"></div>
+                                            </div>
+                                            <div ng-switch-when="10" ng-switch-when-separator="|">
+                                                <div ng-include="'Scripts/app/time-line/bubble/field/object.html'"></div>
+                                            </div>
+                                            <div ng-switch-when="13" ng-switch-when-separator="|">
+                                                <div ng-include="'Scripts/app/time-line/bubble/field/multiobject.html'"></div>
+                                            </div>
+                                            <div ng-switch-when="0|1|2|3|4|6|7" ng-switch-when-separator="|">
+                                                <div ng-include="'Scripts/app/time-line/bubble/field/simpleValue.html'"></div>
+                                            </div>
+                                        </div>
+                                    </md-card-content>
+                                </md-card>
+                            </div>
+                        </div>
+                    </div>
+                </md-dialog-content>
+            </md-dialog>
+        </div>
+    </div>
+</div> 

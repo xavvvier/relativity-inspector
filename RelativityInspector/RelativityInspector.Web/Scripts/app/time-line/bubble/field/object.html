@@ -1,0 +1,10 @@
+﻿<div ng-if="!bubble.isArray(field['oldValue']) && !bubble.isArray(field['newValue'])">
+    <div ng-if="field['oldValue']">
+        <small>Before</small>
+        <div class="text-before" ng-bind="bubble.binding(+field['oldValue'])[+field['oldValue']]"></div>
+    </div>
+    <div ng-if="field['newValue']">
+        <small>After</small>
+        <div ng-bind="bubble.binding(+field['newValue'])[+field['newValue']]"></div>
+    </div>
+</div>

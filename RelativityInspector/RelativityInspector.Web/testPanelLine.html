@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" async href="dist/css">
+    <script src="dist/js"></script>
+
+    <script src="signalr/hubs" type="text/javascript"></script>
+
+    <script src="Scripts/app/app.module.js"></script>
+    <script src="Scripts/app/dist/app.dist.js"></script>
+    <script src="Scripts/app/main/main.controller.js"></script>
+    <script src="Scripts/app/core/app.core.module.js"></script>
+    <script src="Scripts/app/core/signalR/factory/signalR.core.factory.js"></script>
+    <script src="Scripts/app/core/objectType/objectType.core.factory.js"></script>
+
+    <script src="Scripts/app/time-line/app.timeLine.module.js"></script>
+    <script src="Scripts/app/time-line/panel/panel.timeLine.directive.js"></script>
+    <script src="Scripts/app/time-line/panel/panel.timeLine.controller.js"></script>
+    <script src="Scripts/app/time-line/bubble/bubble.timeLine.directive.js"></script>
+    <script src="Scripts/app/time-line/bubble/bubble.timeLine.controller.js"></script>
+    <link href="Scripts/app/time-line/panel/panel.timeLine.directive.css" rel="stylesheet" />
+    <link href="Scripts/app/time-line/bubble/bubble.timeLine.directive.css" rel="stylesheet" />
+    <script src="Scripts/app/time-line/panel/panel.timeLine.controller.test.js"></script>
+    <script src="Scripts/app/core/artifact/artifact.core.factory.js"></script>
+
+</head>
+<body ng-app="app">
+    <div ng-controller="test.panel.timeLine as T" layout-fill="" layout="column">
+        <md-toolbar md-scroll-shrink>
+            <div class="md-toolbar-tools">Test Panel Line</div>
+        </md-toolbar>
+        <div layout="row" layout-align="space-around" ng-if="T.signalRCore.status === 1">
+            <panel-time-line items="T.adutis"></panel-time-line>
+        </div>
+    </div>
+</body>
+</html>
