@@ -1,9 +1,28 @@
-﻿
-<div ng-if="field['set']">
-    <small>Before</small>
-    <span ng-bind="field['set']"></span>
+﻿<div ng-if="bubble.isArray(field['unset'])">
+    <div ng-if="field['unset'].length">
+        <small>Before</small>
+        <ul ng-repeat="choice in field['unset'] track by $index">
+            <li class="text-before" ng-bind="bubble.binding(+choice)[+choice]"></li>
+        </ul>
+    </div>
 </div>
-<div ng-if="field['unset']">
-    <small>After</small>
-    <span ng-bind="field['unset']"></span>
+<div ng-if="bubble.isArray(field['set'])">
+    <div ng-if="field['set'].length">
+        <small>After</small>
+        <ul ng-repeat="choice in field['set'] track by $index">
+            <li ng-bind="bubble.binding(+choice)[+choice]"></li>
+        </ul>
+    </div>
+</div>
+<div ng-if="!bubble.isArray(field['unset'])">
+    <div ng-if="field['unset']">
+        <small>Before</small>
+        <div class="text-before" ng-bind="bubble.binding(+field['unset'])[+field['unset']]"></div>
+    </div>
+</div>
+<div ng-if="!bubble.isArray(field['set'])">
+    <div ng-if="field['set']">
+        <small>After</small>
+        <div ng-bind="bubble.binding(+field['set'])[+field['set']]"></div>
+    </div>
 </div>
